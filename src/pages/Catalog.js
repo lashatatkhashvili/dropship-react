@@ -13,8 +13,6 @@ export default function Catalog() {
   useEffect(() => {
     productsReq().then((products) => {
       setLoading(false);
-      products.data.map((product) => (product.selected = false));
-      console.log(products.data);
       setProducts(products.data);
     });
   }, []);

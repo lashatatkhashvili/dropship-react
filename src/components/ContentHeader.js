@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+import CatalogSearch from "./CatalogSearch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilter,
   faCheck,
-  faSearch,
-  faTimes,
   faBars,
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
@@ -74,35 +73,7 @@ export default function ContentHeader({ products, setProducts }) {
         </button>
 
         <div className="content__header-right">
-          <div className="content__header-form">
-            <input
-              type="text"
-              id="search"
-              className="content__search content__search--hide"
-              placeholder="search..."
-            />
-            <button className="content__form-btn" id="search-btn">
-              <span className="search-icon">
-                <FontAwesomeIcon icon={faSearch} />
-              </span>
-            </button>
-
-            <button
-              className="content__search-close content__search--hide content__search-close--hide"
-              id="search-hide"
-            >
-              <span className="close-icon">
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
-            </button>
-          </div>
-          <button className="content__header-btn content__header-btn--add">
-            ADD TO INVENTORY
-          </button>
-
-          <button className="content__header-btn content__add-btn--small">
-            ADD
-          </button>
+          <CatalogSearch products={products} setProducts={setProducts} />
 
           <button className="nav-icon">
             <FontAwesomeIcon icon={faBars} />
