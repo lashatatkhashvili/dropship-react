@@ -10,7 +10,19 @@ import {
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function ContentHeader({ checked, setChecked, products }) {
+export default function ContentHeader({ products, setProducts }) {
+  const checked = products.filter((item) => item.checked);
+
+  const toggleAdd = () => {
+    let arr = [...products];
+    arr.map((item) => {
+      checked.length >= 0 && (item.checked = true);
+      checked.length === products.length && (item.checked = false);
+      return arr;
+    });
+    setProducts(arr);
+  };
+
   return (
     <div className="content__header-wrapper">
       <header className="content__header">
@@ -24,9 +36,9 @@ export default function ContentHeader({ checked, setChecked, products }) {
           <button
             className="content__header-btn content__header-btn--big"
             onClick={() => {
-              let ids = [];
-              products.map((item) => ids.push(item.id));
-              setChecked(ids);
+              let arr = [...products];
+              arr.map((item) => (item.checked = true));
+              setProducts(arr);
             }}
           >
             SELECT ALL
@@ -40,7 +52,7 @@ export default function ContentHeader({ checked, setChecked, products }) {
           </span>
           <button
             className="content__header-btn content__header-btn--small"
-            id="toggle-add"
+            onClick={toggleAdd}
           >
             <span className="check-icon">
               <FontAwesomeIcon icon={faCheck} />
@@ -51,8 +63,12 @@ export default function ContentHeader({ checked, setChecked, products }) {
         <button
           className={`content__header-btn ${
             checked.length <= 0 && "content__header-btn--clear"
-          }`}
-          onClick={() => setChecked([])}
+          } none`}
+          onClick={() => {
+            let arr = [...products];
+            arr.map((item) => (item.checked = false));
+            setProducts(arr);
+          }}
         >
           Clear Selected
         </button>
@@ -119,7 +135,6 @@ export default function ContentHeader({ checked, setChecked, products }) {
 }
 
 ContentHeader.propTypes = {
-  checked: PropTypes.array,
   products: PropTypes.array,
-  setChecked: PropTypes.func,
+  setProducts: PropTypes.func,
 };

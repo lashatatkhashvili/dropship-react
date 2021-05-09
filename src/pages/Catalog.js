@@ -9,11 +9,12 @@ import "../styles/Catalog.css";
 export default function Catalog() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [checked, setChecked] = useState([]);
 
   useEffect(() => {
     productsReq().then((products) => {
       setLoading(false);
+      products.data.map((product) => (product.selected = false));
+      console.log(products.data);
       setProducts(products.data);
     });
   }, []);
@@ -25,17 +26,8 @@ export default function Catalog() {
         <div className="catalog">
           <CatalogNav />
           <section className="content">
-            <ContentHeader
-              checked={checked}
-              setChecked={setChecked}
-              products={products}
-            />
-            <Products
-              loading={loading}
-              data={products}
-              checked={checked}
-              setChecked={setChecked}
-            />
+            <ContentHeader products={products} setProducts={setProducts} />
+            <Products loading={loading} data={products} setData={setProducts} />
           </section>
         </div>
       </main>

@@ -1,32 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Products({ loading, data, checked, setChecked }) {
-  const checkProduct = (id, e) => {
-    if (checked.includes(id)) {
-      let arr = [...checked];
-      arr.splice(checked.indexOf(id), 1);
-      setChecked([...arr]);
-    } else {
-      setChecked([...checked, id]);
-    }
+export default function Products({ loading, data, setData }) {
+  const checkProduct = (i) => {
+    let arr = [...data];
+    arr[i].checked = data[i].checked ? false : true;
+    setData([...arr]);
   };
 
   return (
     <div className="products">
       <div className="products-wrapper">
         {data &&
-          data.map((item) => {
+          data.map((item, i) => {
             return (
               <div
-                className={`product ${
-                  checked.includes(item.id) && "product--border"
-                }`}
+                className={`product ${item.checked && "product--border"}`}
                 key={item.id}
               >
                 <div
                   className={`product__add ${
-                    checked.includes(item.id) && "product__add--click"
+                    item.checked && "product__add--click"
                   }`}
                 >
                   <div className="round">
@@ -34,8 +28,8 @@ export default function Products({ loading, data, checked, setChecked }) {
                       type="checkbox"
                       id={item.id}
                       className="product__check"
-                      onChange={() => checkProduct(item.id)}
-                      checked={checked.includes(item.id)}
+                      onChange={() => checkProduct(i)}
+                      checked={item.checked === true}
                     />
                     <label htmlFor={item.id}></label>
                   </div>
@@ -43,7 +37,7 @@ export default function Products({ loading, data, checked, setChecked }) {
                   <label
                     htmlFor="check"
                     className={`product__check-label ${
-                      checked && "product__check-label--non"
+                      item.checked && "product__check-label--non"
                     }`}
                   >
                     Add To Inventory
@@ -76,6 +70,5 @@ export default function Products({ loading, data, checked, setChecked }) {
 Products.propTypes = {
   loading: PropTypes.bool,
   data: PropTypes.array,
-  checked: PropTypes.array,
-  setChecked: PropTypes.func,
+  setData: PropTypes.func,
 };
