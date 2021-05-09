@@ -36,7 +36,7 @@ export default function ContentHeader({ checked, setChecked, products }) {
             <span className="content__selected-number">
               selected <span id="count">{checked.length}</span> out of
             </span>
-            <span className="content__products">274,290 products</span>
+            <span className="content__products"> 274,290 products</span>
           </span>
           <button
             className="content__header-btn content__header-btn--small"
