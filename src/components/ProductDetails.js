@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 
 export default function ProductDetails({
   props,
@@ -84,3 +85,14 @@ export default function ProductDetails({
     </div>
   );
 }
+
+ProductDetails.propTypes = {
+  products: PropTypes.array,
+  setData: PropTypes.func,
+  visible: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  setVisible: PropTypes.func,
+};
+
+ProductDetails.propTypes = {
+  setVisible: PropTypes.func,
+};

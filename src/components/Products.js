@@ -86,4 +86,5 @@ Products.propTypes = {
   loading: PropTypes.bool,
   data: PropTypes.array,
   setData: PropTypes.func,
+  setVisible: PropTypes.func,
 };

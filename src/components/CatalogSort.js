@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import productsReq from "../API";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -35,3 +36,7 @@ export default function CatalogSort({ setProducts }) {
     </div>
   );
 }
+
+CatalogSort.propTypes = {
+  setProducts: PropTypes.func,
+};

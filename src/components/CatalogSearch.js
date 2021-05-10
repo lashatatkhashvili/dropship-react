@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import productsReq from "../API";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -64,3 +65,7 @@ export default function CatalogSearch({ setProducts }) {
     </>
   );
 }
+
+CatalogSearch.propTypes = {
+  setProducts: PropTypes.func,
+};
