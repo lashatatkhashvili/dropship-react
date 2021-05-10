@@ -9,11 +9,8 @@ export default function Products({ loading, data, setData, setVisible }) {
   };
 
   const productDetails = (id, e) => {
-    if (
-      e.target.previousSibling &&
-      e.target.previousSibling.className !== "product__check" &&
-      e.target.nodeName !== "LABEL"
-    ) {
+    if (e.target.localName === "label" || e.target.localName === "input") {
+    } else {
       window.history.replaceState(
         null,
         "New Page Title",
