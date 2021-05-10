@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import CatalogSearch from "./CatalogSearch";
+import CatalogSort from "./CatalogSort";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilter,
@@ -86,21 +87,7 @@ export default function ContentHeader({ products, setProducts }) {
           </div>
         </div>
       </header>
-
-      <div className="content__sort">
-        <label htmlFor="sort">
-          <span className="alt-icon">
-            {" "}
-            <FontAwesomeIcon icon={faBars} />
-          </span>
-          Sort By:
-        </label>
-        <select id="sort" className="content__sort-select">
-          <option value="new">New Arrivals</option>
-          <option value="high">Price: High To Low</option>
-          <option value="low">Price: Low To High</option>
-        </select>
-      </div>
+      <CatalogSort setProducts={setProducts} />
     </div>
   );
 }

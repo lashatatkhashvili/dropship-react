@@ -4,10 +4,12 @@ import Nav from "../components/Nav";
 import CatalogNav from "../components/CatalogNav";
 import ContentHeader from "../components/ContentHeader";
 import Products from "../components/Products";
+import ProductDetails from "../components/ProductDetails";
 import "../styles/Catalog.css";
 
-export default function Catalog() {
+export default function Catalog(props) {
   const [products, setProducts] = useState([]);
+  const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,9 +27,20 @@ export default function Catalog() {
           <CatalogNav />
           <section className="content">
             <ContentHeader products={products} setProducts={setProducts} />
-            <Products loading={loading} data={products} setData={setProducts} />
+            <Products
+              loading={loading}
+              data={products}
+              setData={setProducts}
+              setVisible={setVisible}
+            />
           </section>
         </div>
+        <ProductDetails
+          props={props}
+          products={products}
+          visible={visible}
+          setVisible={setVisible}
+        />
       </main>
     </div>
   );

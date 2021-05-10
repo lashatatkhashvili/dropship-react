@@ -1,11 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-export default function Products({ loading, data, setData }) {
+export default function Products({ loading, data, setData, setVisible }) {
   const checkProduct = (i) => {
     let arr = [...data];
     arr[i].checked = data[i].checked ? false : true;
     setData([...arr]);
+  };
+
+  const productDetails = (id, e) => {
+    if (
+      e.target.previousSibling &&
+      e.target.previousSibling.className !== "product__check" &&
+      e.target.nodeName !== "LABEL"
+    ) {
+      window.history.replaceState(
+        null,
+        "New Page Title",
+        `catalog?product=${id}`
+      );
+      setVisible(id);
+    }
   };
 
   return (
@@ -17,6 +32,9 @@ export default function Products({ loading, data, setData }) {
               <div
                 className={`product ${item.checked && "product--border"}`}
                 key={item.id}
+                onClick={(e) => {
+                  productDetails(item.id, e);
+                }}
               >
                 <div
                   className={`product__add ${
