@@ -4,8 +4,9 @@ import productsReq from "../API";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
-export default function CatalogSort({ setProducts }) {
+export default function CatalogSort({ setProducts, setLoading }) {
   const sortProd = async (e) => {
+    setLoading(true);
     const products = await productsReq(e.target.value);
 
     const sorted = products.data.sort((a, b) => {
@@ -18,6 +19,7 @@ export default function CatalogSort({ setProducts }) {
       }
     });
     setProducts(sorted);
+    setLoading(false);
   };
   return (
     <div className="content__sort">
@@ -39,4 +41,5 @@ export default function CatalogSort({ setProducts }) {
 
 CatalogSort.propTypes = {
   setProducts: PropTypes.func,
+  setLoading: PropTypes.func,
 };

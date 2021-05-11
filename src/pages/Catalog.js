@@ -5,7 +5,6 @@ import CatalogNav from "../components/CatalogNav";
 import ContentHeader from "../components/ContentHeader";
 import Products from "../components/Products";
 import ProductDetails from "../components/ProductDetails";
-import Loading from "../components/Loading";
 import "../styles/Catalog.css";
 
 export default function Catalog(props) {
@@ -32,17 +31,15 @@ export default function Catalog(props) {
               products={products}
               setProducts={setProducts}
               setBurgerNav={setBurgerNav}
+              setLoading={setLoading}
             />
-            {loading ? (
-              <Loading quantity={8} />
-            ) : (
-              <Products
-                loading={loading}
-                data={products}
-                setData={setProducts}
-                setVisible={setVisible}
-              />
-            )}
+
+            <Products
+              loading={loading}
+              data={products}
+              setData={setProducts}
+              setVisible={setVisible}
+            />
           </section>
         </div>
         <ProductDetails

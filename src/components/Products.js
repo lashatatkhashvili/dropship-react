@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import Loading from "../components/Loading";
 
-export default function Products({ loading, data, setData, setVisible }) {
+export default function Products({ data, setData, setVisible, loading }) {
   const checkProduct = (i) => {
     let arr = [...data];
     arr[i].checked = data[i].checked ? false : true;
@@ -23,6 +24,7 @@ export default function Products({ loading, data, setData, setVisible }) {
   return (
     <div className="products">
       <div className="products-wrapper">
+        {loading && <Loading quantity={16} />}
         {data &&
           data.map((item, i) => {
             return (

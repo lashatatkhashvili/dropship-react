@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import {
   Dashboard,
   Catalog,
@@ -111,3 +112,8 @@ export default function Nav({ burgerNav, setBurgerNav }) {
     </header>
   );
 }
+
+Nav.propTypes = {
+  burgerNav: PropTypes.bool,
+  setBurgerNav: PropTypes.func,
+};

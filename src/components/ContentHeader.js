@@ -10,7 +10,12 @@ import {
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function ContentHeader({ products, setProducts, setBurgerNav }) {
+export default function ContentHeader({
+  products,
+  setProducts,
+  setBurgerNav,
+  setLoading,
+}) {
   const checked = products.filter((item) => item.checked);
 
   const toggleAdd = () => {
@@ -87,7 +92,7 @@ export default function ContentHeader({ products, setProducts, setBurgerNav }) {
           </div>
         </div>
       </header>
-      <CatalogSort setProducts={setProducts} />
+      <CatalogSort setProducts={setProducts} setLoading={setLoading} />
     </div>
   );
 }
@@ -95,4 +100,6 @@ export default function ContentHeader({ products, setProducts, setBurgerNav }) {
 ContentHeader.propTypes = {
   products: PropTypes.array,
   setProducts: PropTypes.func,
+  setBurgerNav: PropTypes.func,
+  setLoading: PropTypes.func,
 };
