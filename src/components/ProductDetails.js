@@ -92,7 +92,3 @@ ProductDetails.propTypes = {
   visible: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   setVisible: PropTypes.func,
 };
-
-ProductDetails.propTypes = {
-  setVisible: PropTypes.func,
-};

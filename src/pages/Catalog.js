@@ -5,12 +5,14 @@ import CatalogNav from "../components/CatalogNav";
 import ContentHeader from "../components/ContentHeader";
 import Products from "../components/Products";
 import ProductDetails from "../components/ProductDetails";
+import Loading from "../components/Loading";
 import "../styles/Catalog.css";
 
 export default function Catalog(props) {
   const [products, setProducts] = useState([]);
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [burgerNav, setBurgerNav] = useState(false);
 
   useEffect(() => {
     productsReq().then((products) => {
@@ -21,18 +23,26 @@ export default function Catalog(props) {
 
   return (
     <div className="wrapper">
-      <Nav />
+      <Nav burgerNav={burgerNav} setBurgerNav={setBurgerNav} />
       <main className="main">
         <div className="catalog">
           <CatalogNav />
           <section className="content">
-            <ContentHeader products={products} setProducts={setProducts} />
-            <Products
-              loading={loading}
-              data={products}
-              setData={setProducts}
-              setVisible={setVisible}
+            <ContentHeader
+              products={products}
+              setProducts={setProducts}
+              setBurgerNav={setBurgerNav}
             />
+            {loading ? (
+              <Loading quantity={8} />
+            ) : (
+              <Products
+                loading={loading}
+                data={products}
+                setData={setProducts}
+                setVisible={setVisible}
+              />
+            )}
           </section>
         </div>
         <ProductDetails

@@ -3,7 +3,7 @@ import Nav from "../components/Nav";
 
 export default function Dashboard() {
   return (
-    <div>
+    <div style={{ display: "flex" }}>
       <Nav />
       Dashboard
     </div>

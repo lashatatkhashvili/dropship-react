@@ -10,7 +10,7 @@ import {
   faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function ContentHeader({ products, setProducts }) {
+export default function ContentHeader({ products, setProducts, setBurgerNav }) {
   const checked = products.filter((item) => item.checked);
 
   const toggleAdd = () => {
@@ -77,7 +77,7 @@ export default function ContentHeader({ products, setProducts }) {
           <CatalogSearch products={products} setProducts={setProducts} />
 
           <button className="nav-icon">
-            <FontAwesomeIcon icon={faBars} />
+            <FontAwesomeIcon icon={faBars} onClick={() => setBurgerNav(true)} />
           </button>
 
           <div className="help">

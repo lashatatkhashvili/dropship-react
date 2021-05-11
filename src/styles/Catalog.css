@@ -532,7 +532,7 @@
 }
 
 .product__image img {
-  width: 30%;
+  width: 50%;
   height: 100%;
   object-fit: contain;
 }
