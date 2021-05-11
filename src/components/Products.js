@@ -72,8 +72,13 @@ export default function Products({ data, setData, setVisible, loading }) {
                   <h3 className="product__name-heading">{item.title}</h3>
                 </div>
                 <div className="product__info">
-                  <p className="product__info-paragraph">RRP: $6</p>
-                  <p className="product__info-paragraph">Profit: 25% / $2</p>
+                  <p className="product__info-paragraph">
+                    RRP: ${Math.round(item.price / 3)}
+                  </p>
+                  <p className="product__info-paragraph">
+                    Profit: {Math.round(item.price / 8)}% / $
+                    {Math.round(item.price / 4)}
+                  </p>
                   <p className="product__info-paragraph">Cost: ${item.price}</p>
                 </div>
               </div>
