@@ -25,7 +25,7 @@ export default function Catalog(props) {
       <Nav burgerNav={burgerNav} setBurgerNav={setBurgerNav} />
       <main className="main">
         <div className="catalog">
-          <CatalogNav />
+          <CatalogNav setProducts={setProducts} />
           <section className="content">
             <ContentHeader
               products={products}

@@ -1,8 +1,10 @@
 import React from "react";
+import RangeSlider from "./RangeSlider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
-export default function CatalogNav() {
+export default function CatalogNav({ products, setProducts }) {
   return (
     <nav className="catalog__nav">
       <div className="catalog__nav-title">
@@ -30,7 +32,29 @@ export default function CatalogNav() {
         <select className="catalog__nav-select">
           <option value="sup">Select Supplier</option>
         </select>
+        <RangeSlider
+          name="Price Range"
+          type="$"
+          min={1}
+          max={1000}
+          products={products}
+          setProducts={setProducts}
+        />
+        <RangeSlider
+          name="Pofit Range"
+          type="%"
+          min={1}
+          max={98}
+          products={products}
+          setProducts={setProducts}
+        />
       </form>
+      <button className="catalog__nav-btn">Reset Filter</button>
     </nav>
   );
 }
+
+RangeSlider.propTypes = {
+  ptoducts: PropTypes.array,
+  setProducts: PropTypes.func,
+};

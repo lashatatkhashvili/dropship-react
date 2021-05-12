@@ -48,6 +48,7 @@
   width: 220px;
   height: 100vh;
   background: #ecedf5;
+  padding: 0 8px 0 9px;
 }
 
 .catalog__nav-title {
@@ -93,6 +94,22 @@
   text-transform: capitalize;
 }
 
+.catalog__nav-btn {
+  width: 100%;
+  margin-top: 35px;
+  background: #61d5df;
+  color: #fff;
+  font-weight: 400;
+  text-align: center;
+  border: 1px solid #61d5df;
+  border-radius: 4px;
+  font-size: 15px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-family: Gilroy-med;
+  text-transform: uppercase;
+  outline: 0;
+}
 /* Catalog Header */
 
 .content__header-wrapper {
