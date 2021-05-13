@@ -6,6 +6,11 @@ import PropTypes from "prop-types";
 
 export default function CatalogNav({ products, setProducts }) {
   const [reset, setReset] = useState(false);
+
+  const resetFunc = (e) => {
+    e.preventDefault();
+    setReset(!reset);
+  };
   return (
     <nav className="catalog__nav">
       <div className="catalog__nav-title">
@@ -51,10 +56,10 @@ export default function CatalogNav({ products, setProducts }) {
           setProducts={setProducts}
           reset={reset}
         />
+        <button className="catalog__nav-btn" onClick={resetFunc}>
+          Reset Filter
+        </button>
       </form>
-      <button className="catalog__nav-btn" onClick={() => setReset(!reset)}>
-        Reset Filter
-      </button>
     </nav>
   );
 }

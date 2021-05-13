@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import CatalogSearch from "./CatalogSearch";
 import CatalogSort from "./CatalogSort";
+import Help from "./Help";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFilter,
@@ -16,6 +17,7 @@ export default function ContentHeader({
   setBurgerNav,
   setLoading,
 }) {
+  const [helpVisible, setHelpVisible] = useState(false);
   const checked = products.filter((item) => item.checked);
 
   const toggleAdd = () => {
@@ -86,9 +88,10 @@ export default function ContentHeader({
           </button>
 
           <div className="help">
-            <button className="help__btn">
+            <button className="help__btn" onClick={() => setHelpVisible(true)}>
               <FontAwesomeIcon icon={faQuestion} />
             </button>
+            <Help helpVisible={helpVisible} setHelpVisible={setHelpVisible} />
           </div>
         </div>
       </header>

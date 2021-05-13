@@ -9,6 +9,10 @@ body {
   font: Arial, Verdana, Helvetica, sans-serif;
 }
 
+ul {
+  list-style: none;
+}
+
 /* Fonts */
 
 @font-face {

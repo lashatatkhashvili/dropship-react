@@ -48,7 +48,6 @@
   width: 220px;
   height: 100vh;
   background: #ecedf5;
-  padding: 0 8px 0 9px;
 }
 
 .catalog__nav-title {
@@ -274,6 +273,127 @@
   color: #49547d;
   border-radius: 50%;
   font-weight: bolder;
+  outline: 0;
+  cursor: pointer;
+}
+
+.help__btn:hover {
+  box-shadow: 1px 1px 8px 6px #ccc;
+}
+
+.help__info {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0%;
+  z-index: 1;
+  width: 885px;
+  height: 100vh;
+  background: #fff;
+  transform: translateX(100%);
+  transition-duration: 0.5s;
+}
+
+.help__info--anim {
+  transform: translateX(0%);
+  transition-duration: 0.5s;
+}
+
+.help__close {
+  position: absolute;
+  margin-left: -45px;
+  background: linear-gradient(127deg, #f75070, #ffe194) !important;
+  border-radius: 7px 0 0 7px;
+  width: 45px;
+  height: 41px;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+  font-size: 12px;
+  color: white;
+}
+
+.help__close--none {
+  display: none;
+}
+
+.help__nav {
+  flex: 1 27%;
+  background-color: #fafafa;
+  border-right: 3px solid #ededed;
+  padding: 38px 5px 38px 2%;
+  overflow-y: auto;
+  box-shadow: rgb(0 0 0 / 30%) -1px 0 3px;
+}
+
+.help__nav-item {
+  padding: 12px 0 8px 20px;
+  margin-bottom: 2px;
+  width: 100%;
+  border-radius: 20px;
+  font-size: 14.4px;
+  cursor: pointer;
+  font-family: Gilroy-med;
+}
+
+.help__nav-item:hover,
+.help__nav-item--active {
+  background-color: #e5f3fe;
+  color: #0c7eff;
+  font-weight: bold;
+}
+
+.help-main {
+  flex: 2 73%;
+  background-color: #fff;
+  overflow-y: auto;
+  padding: 38px 41px 38px 32px;
+}
+
+.help-main__heading {
+  font-family: gilroy-bold;
+  letter-spacing: 0;
+  line-height: 1em;
+  font-size: 2.3rem;
+  margin-bottom: 0;
+  color: #322c3b;
+}
+
+.help-main__paragraph {
+  line-height: 1.8em;
+  padding: 18px 0 29px;
+  font-family: Gilroy-med;
+  font-size: 15px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  color: #322c3b;
+}
+
+.help-main__more {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 250px;
+}
+
+.help-main__more-heading {
+  font-family: Gilroy-bold;
+  letter-spacing: 0;
+  font-size: 15px;
+  text-align: center;
+  line-height: 1em;
+}
+
+.help-main__more-btn {
+  border-radius: 50px;
+  width: 168px;
+  height: 42px;
+  background-color: #eafbe9;
+  color: #02cf01;
+  margin: 5px 0 10px;
+  font-family: Gilroy-bold;
+  border: none;
   outline: 0;
   cursor: pointer;
 }
