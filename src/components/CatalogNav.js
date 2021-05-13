@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import RangeSlider from "./RangeSlider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 
 export default function CatalogNav({ products, setProducts }) {
+  const [reset, setReset] = useState(false);
   return (
     <nav className="catalog__nav">
       <div className="catalog__nav-title">
@@ -39,6 +40,7 @@ export default function CatalogNav({ products, setProducts }) {
           max={1000}
           products={products}
           setProducts={setProducts}
+          reset={reset}
         />
         <RangeSlider
           name="Pofit Range"
@@ -47,9 +49,12 @@ export default function CatalogNav({ products, setProducts }) {
           max={98}
           products={products}
           setProducts={setProducts}
+          reset={reset}
         />
       </form>
-      <button className="catalog__nav-btn">Reset Filter</button>
+      <button className="catalog__nav-btn" onClick={() => setReset(!reset)}>
+        Reset Filter
+      </button>
     </nav>
   );
 }

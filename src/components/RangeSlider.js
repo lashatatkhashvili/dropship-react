@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
@@ -45,7 +45,14 @@ const useStyles = makeStyles({
   },
 });
 
-export default function RangeSlider({ name, min, max, type, setProducts }) {
+export default function RangeSlider({
+  name,
+  min,
+  max,
+  type,
+  setProducts,
+  reset,
+}) {
   const classes = useStyles();
   const [value, setValue] = React.useState([min, max]);
 
@@ -64,6 +71,11 @@ export default function RangeSlider({ name, min, max, type, setProducts }) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    setValue([min, max]);
+    productsReq().then((data) => setProducts(data.data));
+  }, [reset, min, max, setProducts]);
 
   return (
     <div className={classes.root}>
