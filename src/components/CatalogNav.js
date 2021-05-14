@@ -4,7 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 
-export default function CatalogNav({ products, setProducts }) {
+export default function CatalogNav({
+  products,
+  setProducts,
+  filterVisible,
+  setFilterVisible,
+}) {
   const [reset, setReset] = useState(false);
 
   const resetFunc = (e) => {
@@ -12,7 +17,11 @@ export default function CatalogNav({ products, setProducts }) {
     setReset(!reset);
   };
   return (
-    <nav className="catalog__nav">
+    <nav
+      className={
+        filterVisible ? "catalog__nav catalog__nav--toggle" : "catalog__nav "
+      }
+    >
       <div className="catalog__nav-title">
         Choose Niche
         <span className="angle-icon">
@@ -27,6 +36,18 @@ export default function CatalogNav({ products, setProducts }) {
           <FontAwesomeIcon icon={faAngleDown} />
         </span>
       </div>
+
+      <button
+        className="catalog__nav-back"
+        onClick={() => setFilterVisible(!filterVisible)}
+      >
+        <img
+          src="/assets/right-arrow.svg"
+          alt="arrow-right"
+          className="catalog__nav-back--arrow"
+        />{" "}
+        Back
+      </button>
 
       <form className="catalog__nav-form">
         <select className="catalog__nav-select">
@@ -67,4 +88,6 @@ export default function CatalogNav({ products, setProducts }) {
 RangeSlider.propTypes = {
   ptoducts: PropTypes.array,
   setProducts: PropTypes.func,
+  filterVisible: PropTypes.bool,
+  setFilterVisible: PropTypes.func,
 };

@@ -16,8 +16,11 @@ export default function ContentHeader({
   setProducts,
   setBurgerNav,
   setLoading,
+  filterVisible,
+  setFilterVisible,
 }) {
   const [helpVisible, setHelpVisible] = useState(false);
+
   const checked = products.filter((item) => item.checked);
 
   const toggleAdd = () => {
@@ -34,7 +37,10 @@ export default function ContentHeader({
     <div className="content__header-wrapper">
       <header className="content__header">
         <div className="content__selected-items">
-          <button className="content__header-btn content__header-btn--filter">
+          <button
+            className="content__header-btn content__header-btn--filter"
+            onClick={() => setFilterVisible(!filterVisible)}
+          >
             <span className="filter-text">Filter</span>
             <span className="filter-icon">
               <FontAwesomeIcon icon={faFilter} />
@@ -105,4 +111,6 @@ ContentHeader.propTypes = {
   setProducts: PropTypes.func,
   setBurgerNav: PropTypes.func,
   setLoading: PropTypes.func,
+  filterVisible: PropTypes.bool,
+  setFilterVisible: PropTypes.func,
 };

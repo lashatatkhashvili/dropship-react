@@ -12,6 +12,7 @@ export default function Catalog(props) {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [burgerNav, setBurgerNav] = useState(false);
+  const [filterVisible, setFilterVisible] = useState(false);
 
   useEffect(() => {
     productsReq().then((products) => {
@@ -25,13 +26,19 @@ export default function Catalog(props) {
       <Nav burgerNav={burgerNav} setBurgerNav={setBurgerNav} />
       <main className="main">
         <div className="catalog">
-          <CatalogNav setProducts={setProducts} />
+          <CatalogNav
+            setProducts={setProducts}
+            filterVisible={filterVisible}
+            setFilterVisible={setFilterVisible}
+          />
           <section className="content">
             <ContentHeader
               products={products}
               setProducts={setProducts}
               setBurgerNav={setBurgerNav}
               setLoading={setLoading}
+              setFilterVisible={setFilterVisible}
+              filterVisible={filterVisible}
             />
 
             <Products
