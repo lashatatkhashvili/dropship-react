@@ -29,7 +29,7 @@ export default function Products({ data, setData, setVisible, loading }) {
           data.map((item, i) => {
             return (
               <div
-                className={`product ${item.checked && "product--border"}`}
+                className={`product ${item.checked ? "product--border" : ""}`}
                 key={item.id}
                 onClick={(e) => {
                   productDetails(item.id, e);
